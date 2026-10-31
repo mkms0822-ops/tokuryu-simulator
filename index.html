@@ -877,6 +877,56 @@ var SE = {
 };
 function se(k, i){ if(!SND.on || !SE[k]) return; try{ SE[k](i); }catch(e){} }
 
+/* ===== 結果の効果音(音声ファイル。se/ フォルダ) ===== */
+var SE_DIR = 'se/';
+var SEF = { clap1:'clap1.mp3', clap2:'clap2.mp3', sugoi:'v-sugoi.mp3', atochotto:'v-atochotto.mp3', mouhitoiki:'v-mouhitoiki.mp3', zannen:'v-zannen.mp3' };
+var RESULT_SE = {
+  S: [['clap1', 0], ['sugoi', 0.35]],      // 拍手と歓声 +「すごいすごい!」
+  A: [['clap2', 0], ['atochotto', 0.4]],   // 拍手 +「あとちょっとだったね」
+  B: [['mouhitoiki', 0.2]],                //「もう一息です」
+  C: [['zannen', 0.2]]                     //「ざんねーん!」
+};
+var seBuf = {};
+function loadSeFile(k){
+  if(k in seBuf) return Promise.resolve(seBuf[k]);
+  var a = ac();
+  if(!a || !window.fetch || !/^https?:$/.test(location.protocol)) return Promise.resolve(null);
+  return fetch(SE_DIR + SEF[k]).then(function(r){ if(!r.ok) throw 0; return r.arrayBuffer(); })
+    .then(function(b){ return new Promise(function(res, rej){ a.decodeAudioData(b, res, rej); }); })
+    .then(function(buf){ seBuf[k] = buf; return buf; })
+    .catch(function(){ seBuf[k] = null; return null; });
+}
+function preloadResultSe(){ if(SND.on) Object.keys(SEF).forEach(loadSeFile); }
+function playSeFile(k, delay, onFail){
+  if(!SND.on) return;
+  loadSeFile(k).then(function(buf){
+    if(!SND.on) return;
+    if(buf){ var a = ac(), s = a.createBufferSource(); s.buffer = buf; s.connect(SND.seG); s.start(a.currentTime + (delay || 0)); return; }
+    var el = new Audio(SE_DIR + SEF[k]); el.volume = Math.min(1, SND.seVol);
+    el.onerror = function(){ if(onFail) onFail(); };
+    setTimeout(function(){ var p = el.play(); if(p && p.catch) p.catch(function(){ if(onFail) onFail(); }); }, (delay || 0) * 1000);
+  });
+}
+/* 結果の声が聞こえるよう、BGMを一時的に小さくする */
+function duckBgm(sec){
+  var low = 0.3;
+  if(SND.ac){
+    var t = SND.ac.currentTime;
+    [[SND.trackG, SND.bgmVol], [SND.bgmG, 0.37 * SND.bgmVol]].forEach(function(p){
+      var g = p[0].gain; g.cancelScheduledValues(t); g.setValueAtTime(p[1] * low, t); g.setValueAtTime(p[1] * low, t + sec); g.linearRampToValueAtTime(p[1], t + sec + 1.2);
+    });
+  }
+  if(SND.audio && !SND.srcNode){ SND.audio.volume = SND.bgmVol * low; setTimeout(function(){ if(SND.audio && !SND.srcNode) SND.audio.volume = SND.bgmVol; }, (sec + 0.5) * 1000); }
+}
+function resultSound(r){
+  if(!SND.on) return;
+  var list = RESULT_SE[r] || [];
+  duckBgm(r === 'S' ? 4.2 : r === 'A' ? 3.6 : 2);
+  var fallback = function(){ if(!resultSound._fb){ resultSound._fb = true; se(r === 'S' || r === 'A' ? 'clear' : 'ng'); } };
+  resultSound._fb = false;
+  list.forEach(function(it){ playSeFile(it[0], it[1], fallback); });
+}
+
 /* BGM: calm(穏やかなアルペジオ) / tense(低いうなり+脈) / danger(心音+速い脈) */
 var CALM = [[220,261.6,329.6],[174.6,220,261.6],[196,246.9,293.7],[164.8,207.7,246.9]];
 function bgm(m){
@@ -1057,6 +1107,7 @@ function startScenario(idx){
   document.getElementById('gTitle').textContent = G.sc.icon + ' ' + G.sc.title;
   updDsum(false);
   setSpeed(G.speed, true);
+  preloadResultSe();
   show('scGame');
   runNode();
 }
@@ -1174,7 +1225,7 @@ function nextFromJudge(){ closeJudge(); se('click'); G.i++; runNode(); }
 
 function finish(){
   clearInterval(G.timer);
-  bgm('calm'); se('clear');
+  bgm('calm');
   var r = G.miss === 0 ? 'S' : G.miss === 1 ? 'A' : G.miss === 2 ? 'B' : 'C';
   var lb = {S:'完全防御! すべての手口を見抜きました', A:'あと一歩! ほぼ見抜けています', B:'要注意。だまされやすい場面があります', C:'危険! 手口をもう一度確認しましょう'}[r];
   var c = cleared(), best = c[G.sc.id];
@@ -1189,6 +1240,7 @@ function finish(){
   document.getElementById('rPts').innerHTML = G.sc.points.map(function(p){ return '<li>' + esc(p) + '</li>'; }).join('');
   show('scResult');
   updateTitle();
+  resultSound(r);
 }
 function shareResult(){
   var t = 'トクリュウ対策シミュレーター「' + G.sc.title + '」ランク' + G.rank + '(被害額 ' + yen(G.dmg) + ')。あなたは見抜けるか? #トクリュウ対策';
