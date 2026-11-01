@@ -13,14 +13,15 @@
 :root{
   --bg:#0c111b; --bg2:#121a28; --card:#172133; --line:rgba(255,255,255,.10);
   --tx:#e9eef6; --tx2:#a9b5c7; --acc:#ffcf4a; --red:#ff4d5e; --grn:#3ddc97; --blu:#5aa9ff;
-  --box:rgba(10,14,24,.92); --fs:16px;
+  --box:rgba(10,14,24,.92);
 }
 html.light{
   --bg:#eef2f7; --bg2:#ffffff; --card:#ffffff; --line:rgba(0,0,0,.10);
   --tx:#172030; --tx2:#556274; --acc:#c98a00; --red:#d92b3a; --grn:#14945e; --blu:#1f6fd1;
   --box:rgba(14,19,30,.94);
 }
-html.fs-s{--fs:14px} html.fs-l{--fs:19px}
+:root{--k:1} html.fs-s{--k:.875} html.fs-l{--k:1.2}
+:root{--fs:calc(16px * var(--k))}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--tx);font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Yu Gothic UI","Meiryo",sans-serif;font-size:var(--fs);line-height:1.7}
 button{font:inherit;color:inherit;cursor:pointer}
@@ -62,41 +63,41 @@ html:not(.light) .ic-sun{display:none} html.light .ic-moon{display:none}
 /* ---------- title ---------- */
 .hero{position:relative;border-radius:20px;overflow:hidden;background:radial-gradient(120% 90% at 20% 0%,#3a1622 0%,#141b2b 55%,#0b1019 100%);color:#fff;padding:34px 22px 26px;border:1px solid rgba(255,255,255,.08)}
 .hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 2px,transparent 2px 4px);pointer-events:none}
-.hero .kick{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.12em;background:#ff4d5e;color:#fff;border-radius:99px;padding:3px 12px}
-.hero h1{font-size:clamp(26px,5.6vw,44px);line-height:1.25;margin:14px 0 8px;letter-spacing:.02em}
+.hero .kick{display:inline-block;font-size:calc((12px) * var(--k));font-weight:800;letter-spacing:.12em;background:#ff4d5e;color:#fff;border-radius:99px;padding:3px 12px}
+.hero h1{font-size:calc((clamp(26px,5.6vw,44px)) * var(--k));line-height:1.25;margin:14px 0 8px;letter-spacing:.02em}
 .hero h1 em{font-style:normal;color:#ffcf4a}
 .hero p{color:#c9d4e3;margin:0 0 18px;max-width:640px}
 .stat{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 20px}
-.stat div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px 12px;font-size:13px;color:#c9d4e3}
-.stat b{display:block;font-size:20px;color:#ff8a95;letter-spacing:.02em}
+.stat div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:8px 12px;font-size:calc((13px) * var(--k));color:#c9d4e3}
+.stat b{display:block;font-size:calc((20px) * var(--k));color:#ff8a95;letter-spacing:.02em}
 .btns{display:flex;flex-wrap:wrap;gap:10px}
-.btn{border:0;border-radius:12px;padding:13px 20px;font-weight:800;font-size:16px;background:#ffcf4a;color:#1b1b1b;box-shadow:0 4px 0 #b88a10}
+.btn{border:0;border-radius:12px;padding:13px 20px;font-weight:800;font-size:calc((16px) * var(--k));background:#ffcf4a;color:#1b1b1b;box-shadow:0 4px 0 #b88a10}
 .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b88a10}
 .btn.sub{background:rgba(255,255,255,.1);color:#fff;box-shadow:none;border:1px solid rgba(255,255,255,.2)}
 .btn.red{background:#ff4d5e;color:#fff;box-shadow:0 4px 0 #a5202d}
 .btn.grn{background:#3ddc97;color:#062a1a;box-shadow:0 4px 0 #1e8a5c}
-.note{font-size:12px;color:var(--tx2);margin-top:14px}
+.note{font-size:calc((12px) * var(--k));color:var(--tx2);margin-top:14px}
 .howto{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
-.howto h2{font-size:17px;margin:0 0 8px}
+.howto h2{font-size:calc((17px) * var(--k));margin:0 0 8px}
 .howto ol{margin:0;padding-left:1.3em}
 .howto li{margin:4px 0}
 
 /* ---------- select ---------- */
 .sec-h{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:4px 0 12px}
-.sec-h h2{margin:0;font-size:20px}
-.prog{font-size:13px;color:var(--tx2)}
+.sec-h h2{margin:0;font-size:calc((20px) * var(--k))}
+.prog{font-size:calc((13px) * var(--k));color:var(--tx2)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
 .card{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px;transition:.15s}
 .card:hover{transform:translateY(-2px);border-color:rgba(255,207,74,.6)}
-.card .ic{font-size:30px;line-height:1}
-.card h3{margin:2px 0 0;font-size:17px}
-.card .rl{font-size:12px;color:var(--tx2)}
-.card .ld{font-size:13px;color:var(--tx2);line-height:1.6}
-.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:6px;font-size:12px;color:var(--tx2)}
+.card .ic{font-size:calc((30px) * var(--k));line-height:1}
+.card h3{margin:2px 0 0;font-size:calc((17px) * var(--k))}
+.card .rl{font-size:calc((12px) * var(--k));color:var(--tx2)}
+.card .ld{font-size:calc((13px) * var(--k));color:var(--tx2);line-height:1.6}
+.card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:6px;font-size:calc((12px) * var(--k));color:var(--tx2)}
 .card .lv{color:var(--acc);letter-spacing:.1em}
-.badge{position:absolute;top:12px;right:12px;font-weight:900;font-size:13px;border-radius:8px;padding:2px 9px;background:#3ddc97;color:#062a1a}
+.badge{position:absolute;top:12px;right:12px;font-weight:900;font-size:calc((13px) * var(--k));border-radius:8px;padding:2px 9px;background:#3ddc97;color:#062a1a}
 .badge.r-A{background:#5aa9ff;color:#04203f}.badge.r-B{background:#ffcf4a;color:#2a1d00}.badge.r-C{background:#ff4d5e;color:#fff}
-.back{background:none;border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:14px;color:var(--tx)}
+.back{background:none;border:1px solid var(--line);border-radius:10px;padding:6px 12px;font-size:calc((14px) * var(--k));color:var(--tx)}
 
 /* ---------- game ---------- */
 .game{max-width:900px;margin:0 auto}
@@ -106,14 +107,14 @@ html:not(.light) .ic-sun{display:none} html.light .ic-moon{display:none}
 .bg.on{opacity:1}
 .ph{display:grid;place-items:center;text-align:center;opacity:0}
 .ph.on{opacity:1}
-.ph-ic{font-size:clamp(48px,11vw,96px);filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));animation:float 4s ease-in-out infinite}
+.ph-ic{font-size:calc((clamp(48px,11vw,96px)) * var(--k));filter:drop-shadow(0 6px 16px rgba(0,0,0,.5));animation:float 4s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-6px)}}
-.ph-lb{position:absolute;left:10px;bottom:8px;right:10px;font-size:11px;color:rgba(255,255,255,.55);text-align:left;line-height:1.4}
+.ph-lb{position:absolute;left:10px;bottom:8px;right:10px;font-size:calc((11px) * var(--k));color:rgba(255,255,255,.55);text-align:left;line-height:1.4}
 .ph-lb b{color:rgba(255,207,74,.85);font-weight:700}
 .vig{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 50%,rgba(0,0,0,.55));pointer-events:none}
 .hud{position:absolute;top:8px;left:8px;right:8px;display:flex;align-items:center;gap:6px;z-index:3}
 .hud .t{flex:1;min-width:0;font-size:12px;font-weight:700;color:#fff;background:rgba(0,0,0,.45);border-radius:99px;padding:4px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hud button{width:34px;height:34px;border-radius:99px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.45);color:#fff;font-size:15px;display:grid;place-items:center}
+.hud button{width:34px;height:34px;border-radius:99px;border:1px solid rgba(255,255,255,.2);background:rgba(0,0,0,.45);color:#fff;font-size:calc((15px) * var(--k));display:grid;place-items:center}
 .dsum{font-size:12px;font-weight:800;color:#fff;background:rgba(0,0,0,.55);border-radius:99px;padding:4px 12px;white-space:nowrap}
 .dsum.hit{background:#ff4d5e;animation:pulse .5s}
 @keyframes pulse{50%{transform:scale(1.12)}}
@@ -123,84 +124,101 @@ html:not(.light) .ic-sun{display:none} html.light .ic-moon{display:none}
 .stage.shake{animation:shake .5s}
 @keyframes shake{20%{transform:translate(-6px,2px)}40%{transform:translate(5px,-3px)}60%{transform:translate(-4px,1px)}80%{transform:translate(3px,-1px)}}
 .box{position:relative;background:var(--box);color:#f1f5fb;border-radius:0 0 16px 16px;padding:16px 18px 30px;min-height:150px;border:1px solid rgba(255,255,255,.08);border-top:2px solid rgba(255,207,74,.55);cursor:pointer;user-select:none}
-.nm{display:inline-block;font-weight:800;font-size:14px;color:#1a1a1a;background:#ffcf4a;border-radius:8px;padding:1px 10px;margin-bottom:6px}
+.nm{display:inline-block;font-weight:800;font-size:calc((14px) * var(--k));color:#1a1a1a;background:#ffcf4a;border-radius:8px;padding:1px 10px;margin-bottom:6px}
 .nm:empty{display:none}
 .tx{font-size:calc(var(--fs) + 1px);line-height:1.85;white-space:pre-wrap;min-height:3.6em}
-.nx{position:absolute;right:16px;bottom:8px;color:#ffcf4a;font-size:13px;animation:blink 1s infinite;opacity:0}
+.nx{position:absolute;right:16px;bottom:8px;color:#ffcf4a;font-size:calc((13px) * var(--k));animation:blink 1s infinite;opacity:0}
 .nx.on{opacity:1}
 @keyframes blink{50%{opacity:.2}}
 .q{font-weight:800;color:#ffcf4a}
 .choices{display:flex;flex-direction:column;gap:8px;margin-top:10px}
 .choices button{text-align:left;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);color:#f1f5fb;border-radius:12px;padding:12px 14px 12px 42px;position:relative;font-size:var(--fs);line-height:1.55;transition:.12s;animation:fade .3s both}
 .choices button:hover,.choices button:focus-visible{background:rgba(255,207,74,.16);border-color:#ffcf4a;outline:none}
-.choices button::before{content:attr(data-k);position:absolute;left:12px;top:11px;width:22px;height:22px;border-radius:6px;background:#ffcf4a;color:#1a1a1a;font-weight:900;font-size:13px;display:grid;place-items:center}
-.ctrl{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:13px;color:var(--tx2);flex-wrap:wrap}
+.choices button::before{content:attr(data-k);position:absolute;left:12px;top:11px;width:22px;height:22px;border-radius:6px;background:#ffcf4a;color:#1a1a1a;font-weight:900;font-size:calc((13px) * var(--k));display:grid;place-items:center}
+.ctrl{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:calc((13px) * var(--k));color:var(--tx2);flex-wrap:wrap}
 .ctrl .sp{display:flex;gap:4px;align-items:center}
-.ctrl .sp button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:3px 9px;font-size:12px}
+.ctrl .sp button{border:1px solid var(--line);background:var(--card);border-radius:8px;padding:3px 9px;font-size:calc((12px) * var(--k))}
 .ctrl .sp button.on{background:#ffcf4a;color:#1a1a1a;border-color:#ffcf4a;font-weight:800}
 
 /* ---------- judge modal ---------- */
 .ov{position:fixed;inset:0;z-index:100;background:rgba(5,8,14,.72);display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(3px)}
 .ov.on{display:flex;animation:fade .25s}
 .jd{width:min(560px,100%);max-height:92vh;overflow:auto;border-radius:18px;background:var(--bg2);color:var(--tx);border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.jd-h{padding:16px 18px;color:#fff;font-weight:900;font-size:20px;display:flex;align-items:center;gap:10px}
+.jd-h{padding:16px 18px;color:#fff;font-weight:900;font-size:calc((20px) * var(--k));display:flex;align-items:center;gap:10px}
 .jd.bad .jd-h{background:linear-gradient(90deg,#c41d32,#ff4d5e)}
 .jd.good .jd-h{background:linear-gradient(90deg,#11875a,#3ddc97);color:#03261a}
 .jd-b{padding:16px 18px 18px}
 .dmg{text-align:center;margin:4px 0 12px}
-.dmg small{display:block;font-size:13px;color:var(--tx2);font-weight:700}
-.dmg .v{font-size:clamp(32px,9vw,48px);font-weight:900;color:var(--red);letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.dmg small{display:block;font-size:calc((13px) * var(--k));color:var(--tx2);font-weight:700}
+.dmg .v{font-size:calc((clamp(32px,9vw,48px)) * var(--k));font-weight:900;color:var(--red);letter-spacing:.01em;font-variant-numeric:tabular-nums}
 .res{background:rgba(255,77,94,.09);border-left:4px solid var(--red);border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .why{background:rgba(61,220,151,.10);border-left:4px solid var(--grn);border-radius:8px;padding:10px 12px}
-.why b,.res b{display:block;font-size:13px;margin-bottom:2px}
+.why b,.res b{display:block;font-size:calc((13px) * var(--k));margin-bottom:2px}
 .jd-f{display:flex;gap:8px;justify-content:flex-end;padding:0 18px 18px;flex-wrap:wrap}
 .log{width:min(620px,100%);max-height:80vh;overflow:auto;border-radius:16px;background:var(--bg2);border:1px solid var(--line);padding:16px 18px}
 .log h3{margin:0 0 8px}
-.log p{margin:0 0 8px;font-size:14px;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.log p{margin:0 0 8px;font-size:calc((14px) * var(--k));border-bottom:1px dashed var(--line);padding-bottom:6px}
 .log p b{color:var(--acc);margin-right:6px}
 
 /* ---------- result ---------- */
 .rs{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden}
 .rs-h{padding:24px 20px;text-align:center;color:#fff;background:radial-gradient(120% 120% at 50% 0%,#24406a,#111a2a)}
-.rank{font-size:72px;font-weight:900;line-height:1;margin:6px 0;text-shadow:0 6px 24px rgba(0,0,0,.4)}
+.rank{font-size:calc((72px) * var(--k));font-weight:900;line-height:1;margin:6px 0;text-shadow:0 6px 24px rgba(0,0,0,.4)}
 .rank.S{color:#3ddc97}.rank.A{color:#5aa9ff}.rank.B{color:#ffcf4a}.rank.C{color:#ff4d5e}
-.rs-h .lb{font-weight:800;font-size:18px}
+.rs-h .lb{font-weight:800;font-size:calc((18px) * var(--k))}
 .rs-b{padding:18px 20px}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
-.kv div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-size:13px;color:var(--tx2)}
-.kv b{display:block;font-size:22px;color:var(--tx)}
+.kv div{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;font-size:calc((13px) * var(--k));color:var(--tx2)}
+.kv b{display:block;font-size:calc((22px) * var(--k));color:var(--tx)}
 .kv b.r{color:var(--red)}
 .pts{margin:0 0 14px;padding:0;list-style:none}
-.pts li{position:relative;padding:8px 10px 8px 34px;border-radius:10px;background:var(--bg);margin-bottom:6px;font-size:14px}
-.pts li::before{content:"✓";position:absolute;left:10px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--grn);color:#fff;font-size:12px;display:grid;place-items:center;font-weight:900}
-.help{background:rgba(255,77,94,.08);border:1px solid rgba(255,77,94,.35);border-radius:14px;padding:12px 14px;margin-bottom:14px;font-size:14px}
-.help h4{margin:0 0 6px;font-size:15px}
-.help a.tel{display:inline-block;margin:3px 6px 3px 0;padding:6px 12px;border-radius:99px;background:var(--red);color:#fff;text-decoration:none;font-weight:800;font-size:14px}
+.pts li{position:relative;padding:8px 10px 8px 34px;border-radius:10px;background:var(--bg);margin-bottom:6px;font-size:calc((14px) * var(--k))}
+.pts li::before{content:"✓";position:absolute;left:10px;top:8px;width:18px;height:18px;border-radius:50%;background:var(--grn);color:#fff;font-size:calc((12px) * var(--k));display:grid;place-items:center;font-weight:900}
+.help{background:rgba(255,77,94,.08);border:1px solid rgba(255,77,94,.35);border-radius:14px;padding:12px 14px;margin-bottom:14px;font-size:calc((14px) * var(--k))}
+.help h4{margin:0 0 6px;font-size:calc((15px) * var(--k))}
+.help a.tel{display:inline-block;margin:3px 6px 3px 0;padding:6px 12px;border-radius:99px;background:var(--red);color:#fff;text-decoration:none;font-weight:800;font-size:calc((14px) * var(--k))}
 .help a.tel.g{background:#2b3b55}
-.disc{font-size:12px;color:var(--tx2);margin-top:14px;line-height:1.6}
+.disc{font-size:calc((12px) * var(--k));color:var(--tx2);margin-top:14px;line-height:1.6}
 /* BGM設定 */
 .log.snd{max-height:90vh;padding:14px 16px}
 .snd h3{margin:0 0 4px}
-.snd .now{margin:0 0 8px;font-size:13px;color:var(--tx2)}
+.snd .now{margin:0 0 8px;font-size:calc((13px) * var(--k));color:var(--tx2)}
 .trks{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
-@media (max-width:520px){.trks{grid-template-columns:1fr}.trk{padding:6px 10px!important}.trk .tn{font-size:14px!important}}
+@media (max-width:520px){.trks{grid-template-columns:1fr}.trk{padding:6px 10px!important}.trk .tn{font-size:calc((14px!important) * var(--k))}}
 .trk{display:flex;align-items:center;gap:10px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:9px 12px;color:var(--tx)}
 .trk:hover{border-color:rgba(255,207,74,.6)}
 .trk.on{border-color:#ffcf4a;background:rgba(255,207,74,.12)}
-.trk .ti{width:24px;text-align:center;font-size:16px;flex-shrink:0;color:var(--acc)}
-.trk .tn{flex:1;font-weight:700;font-size:15px;line-height:1.4}
-.trk .tn small{display:block;font-weight:400;font-size:12px;color:var(--tx2)}
-.trk .tg{font-size:11px;font-weight:800;background:#ffcf4a;color:#1a1a1a;border-radius:99px;padding:2px 8px}
+.trk .ti{width:24px;text-align:center;font-size:calc((16px) * var(--k));flex-shrink:0;color:var(--acc)}
+.trk .tn{flex:1;font-weight:700;font-size:calc((15px) * var(--k));line-height:1.4}
+.trk .tn small{display:block;font-weight:400;font-size:calc((12px) * var(--k));color:var(--tx2)}
+.trk .tg{font-size:calc((11px) * var(--k));font-weight:800;background:#ffcf4a;color:#1a1a1a;border-radius:99px;padding:2px 8px}
 .eq{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
 .eq i{display:block;width:3px;background:var(--acc);animation:eq .9s infinite ease-in-out}
 .eq i:nth-child(2){animation-delay:.2s}.eq i:nth-child(3){animation-delay:.45s}
 @keyframes eq{0%,100%{height:4px}50%{height:14px}}
-.vol{display:grid;grid-template-columns:7.5em 1fr 3em;align-items:center;gap:10px;margin:8px 0;font-size:14px}
+.vol{display:grid;grid-template-columns:7.5em 1fr 3em;align-items:center;gap:10px;margin:8px 0;font-size:calc((14px) * var(--k))}
 .vol input{width:100%;accent-color:#ffcf4a;height:28px}
 .vol span{text-align:right;font-variant-numeric:tabular-nums;color:var(--tx2)}
-.chk{display:flex;align-items:center;gap:8px;font-size:14px;margin-top:6px}
+.chk{display:flex;align-items:center;gap:8px;font-size:calc((14px) * var(--k));margin-top:6px}
 .chk input{width:18px;height:18px;accent-color:#ffcf4a}
-footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
+/* 実写画像の受け口 */
+.hero{background-size:cover;background-position:65% center}
+.hero.has-img h1,.hero.has-img p{text-shadow:0 2px 10px rgba(0,0,0,.7)}
+.cb .cb-tx{white-space:nowrap}
+.hero.has-img::after{opacity:.25}
+.b9110{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin-bottom:10px}
+.b9110[hidden]{display:none}
+.jd-warn{width:40px;height:46px;object-fit:cover;border-radius:6px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.jd-img{aspect-ratio:16/9;border-radius:12px;background-size:cover;background-position:center;margin-bottom:12px}
+.jd-img[hidden]{display:none}
+.cb{position:absolute;left:50%;top:22%;transform:translate(-50%,-10px) scale(.9);z-index:5;display:flex;align-items:center;gap:10px;padding:10px 16px 10px 10px;border-radius:18px;background:rgba(12,16,26,.88);border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:800;font-size:14px;opacity:0;pointer-events:none;transition:.25s;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.cb.on{opacity:1;transform:translate(-50%,0) scale(1)}
+.cb.call.on .cb-ic{animation:buzz .12s linear 14 alternate}
+.cb .cb-ic{width:44px;height:44px;border-radius:12px;background:#1f8f5a;display:grid;place-items:center;font-size:24px;overflow:hidden}
+.cb.msg .cb-ic{background:#2b6fd6}
+.cb .cb-ic img{width:100%;height:100%;object-fit:cover}
+@keyframes buzz{from{transform:translateX(-2px) rotate(-4deg)}to{transform:translateX(2px) rotate(4deg)}}
+footer{text-align:center;font-size:calc((12px) * var(--k));color:var(--tx2);padding:20px 10px 30px}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -263,6 +281,7 @@ footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
     <div class="sec-h"><h2>シナリオを選ぶ</h2><span style="display:flex;gap:8px;align-items:center"><span class="prog" id="sProg"></span><button class="back" type="button" onclick="openSnd()">🎵 BGM・音量</button></span></div>
     <div class="grid" id="grid"></div>
     <div class="howto" style="margin-top:16px">
+      <img class="b9110" hidden alt="スマホで#9110に相談">
       <h2>困ったときの相談先</h2>
       <p style="margin:0">いま危険:<b>110番</b> / 事件になる前の相談・闇バイトの誘い:<b>#9110</b>(警察相談専用電話) / お金・契約の相談:<b>188</b>(消費者ホットライン)</p>
     </div>
@@ -284,6 +303,7 @@ footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
           <button type="button" onclick="openLog()" title="これまでの会話" aria-label="ログ">📜</button>
         </div>
         <div class="flash" id="flash"></div>
+        <div class="cb" id="callBadge" aria-live="polite"></div>
       </div>
       <div class="box" id="box" onclick="advance()" role="button" tabindex="0" aria-live="polite">
         <div class="nm" id="nm"></div>
@@ -307,7 +327,7 @@ footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
   <section id="scResult" class="screen">
     <div class="rs">
       <div class="rs-h">
-        <div id="rTitle" style="font-size:14px;color:#c9d4e3"></div>
+        <div id="rTitle" style="font-size:calc(14px * var(--k));color:#c9d4e3"></div>
         <div class="rank" id="rRank">S</div>
         <div class="lb" id="rLabel"></div>
       </div>
@@ -316,13 +336,14 @@ footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
           <div>まちがえた回数<b id="rMiss">0</b></div>
           <div>出てしまった被害額<b class="r" id="rDmg">0円</b></div>
         </div>
-        <h3 style="margin:0 0 8px;font-size:16px">覚えておきたいこと</h3>
+        <h3 style="margin:0 0 8px;font-size:calc(16px * var(--k))">覚えておきたいこと</h3>
         <ul class="pts" id="rPts"></ul>
         <div class="help">
+          <img class="b9110" hidden alt="スマホで#9110に相談">
           <h4>迷ったら、すぐ相談</h4>
           <a class="tel" href="tel:110">🚨 110番(いま危険)</a>
-          <a class="tel g" href="tel:%239110">☎ #9110 警察相談</a>
-          <a class="tel g" href="tel:188">☎ 188 消費者ホットライン</a>
+          <a class="tel g" href="tel:%239110">📱 #9110 警察相談</a>
+          <a class="tel g" href="tel:188">📱 188 消費者ホットライン</a>
         </div>
         <div class="btns">
           <button class="btn" type="button" onclick="showSelect()">ほかのシナリオへ</button>
@@ -369,31 +390,40 @@ footer{text-align:center;font-size:12px;color:var(--tx2);padding:20px 10px 30px}
    ・BGM        : calm / tense / danger / off
    ・効果音     : ring / bell / notify / glass / steps / heart
    被害額はゲーム用の想定額です。
+   ・選択肢の img:'画像キー' で、判定画面に画像を出せます(例:end_bad_arrest)
    ========================================================= */
 
 /* 画像枠:キー → 必要な画像の説明(img/キー.jpg に置くと差し替わります。推奨 1280×720) */
 var BG = {
-  living_phone:   {ic:'☎️', c:'#2b3a4a', d:'自宅の居間。固定電話が鳴っている'},
-  phone_talk:     {ic:'📞', c:'#2f3346', d:'受話器を耳にあてる高齢の女性(顔は写さない・後ろ姿など)'},
-  video_call:     {ic:'📱', c:'#1f2a44', d:'スマホのビデオ通話。制服風の人物が手帳を見せている(ニセ警察官)'},
-  sms_notice:     {ic:'💬', c:'#24313f', d:'スマホにSMS・メッセージの通知が届いた画面'},
-  bank_counter:   {ic:'🏦', c:'#2c3b38', d:'銀行の窓口。行員が声をかけている'},
-  atm:            {ic:'🏧', c:'#283640', d:'ATMコーナー。携帯電話で話しながら操作する人'},
-  intercom:       {ic:'🔔', c:'#33302a', d:'玄関インターホンのモニターに、作業着やスーツの知らない人物'},
-  night_room:     {ic:'🌙', c:'#151b2b', d:'夜の寝室。窓の外に人影、ガラスの割れる気配'},
-  safe_room:      {ic:'🔒', c:'#1d2633', d:'鍵のかかる部屋に避難し、スマホで110番をかけている'},
-  police_help:    {ic:'🚓', c:'#1d3048', d:'警察官が到着し、住人が安心している場面'},
-  sns_ad:         {ic:'💰', c:'#3a2440', d:'SNSのタイムラインに「高収入・即日・ホワイト案件」の広告'},
-  youth_room:     {ic:'🎧', c:'#262a3f', d:'若者が自分の部屋でスマホを見ている(10代後半〜20代)'},
-  chat_threat:    {ic:'⚠️', c:'#3d1f24', d:'メッセージアプリに届いた脅しの文面(住所や家族の写真を送ってくる)'},
-  street:         {ic:'🏘', c:'#2c3530', d:'住宅街の路上。封筒を受け取りに向かう若者の後ろ姿'},
-  invest_app:     {ic:'📈', c:'#1f3a33', d:'投資アプリの画面。利益が大きく増えているように見えるグラフ'},
-  celeb_ad:       {ic:'📣', c:'#3b2d1f', d:'有名人の写真を使った「必ず儲かる」投資広告(架空の人物で)'},
-  dating_app:     {ic:'💌', c:'#3d2534', d:'マッチングアプリのプロフィールとメッセージ画面'},
-  fake_site:      {ic:'🎣', c:'#2d2a3d', d:'本物そっくりの偽のログイン画面(カード番号・認証コードの入力欄)'},
-  travel_post:    {ic:'✈️', c:'#1f3346', d:'旅行先でSNSに写真を投稿しようとしている家族'},
-  house_front:    {ic:'🏠', c:'#2d3a2e', d:'自宅の外観と表札・郵便受け(謎の記号が書かれている)'},
-  family_talk:    {ic:'👨‍👩‍👧', c:'#2a3a33', d:'家族が食卓で話し合う安心の場面(合言葉を決める等)'}
+  /* ---- 仕様書(実写化&スマホ統一)で指定された画像 ---- */
+  scene01_sns_recruit:      {ic:'📱', c:'#3a2440', spec:'②', d:'SNS・高額バイト勧誘:カフェや自室で、スマホの画面(「ホワイト案件」「日給5万円」などの投稿)を見る20〜30代の男女'},
+  scene02_secret_call:      {ic:'📱', c:'#1f2a44', spec:'③', d:'秘匿アプリ誘導・指示:薄暗い部屋で、秘匿通話アプリ(非通知・匿名)の着信画面を見つめる/耳にスマホを当てる人物'},
+  scene03_id_selfie:        {ic:'🪪', c:'#2c2a3d', spec:'④', d:'身分証・自撮り送信:片手に運転免許証、もう片方の手にスマホのカメラ画面を持って撮影しようとする手元のクローズアップ'},
+  scene04_scam_incoming:    {ic:'📱', c:'#2b3a4a', spec:'⑤', d:'特殊詐欺の着信:リビングで、+から始まる国際電話番号の着信や「未納料金」の警告SMSが出たスマホを、不安そうに見る中高年'},
+  scene05_atm_transfer:     {ic:'🏧', c:'#283640', spec:'⑥', d:'ATM・ネット送金:スマホで通話したままコンビニATMの前に立つ人物の後ろ姿/スマホの送金画面を操作する手元'},
+  scene04_scam_sms:         {ic:'💬', c:'#24313f', spec:'⑤', d:'特殊詐欺のSMS:「未納料金」「法的手続き」などの警告SMSが表示されたスマホの手元(⑤の別カット)'},
+  end_good_9110_smartphone: {ic:'📱', c:'#2a3a33', spec:'⑧', d:'グッドエンド(#9110相談):明るい室内で、スマホのキーパッドに「#9110」と入力して発信し、安心する人物の手元'},
+  /* ---- このゲームで追加で必要な画像(同じルール:実写・スマホ統一) ---- */
+  scene06_intercom_visitor: {ic:'🔔', c:'#33302a', d:'玄関インターホンのモニターに、作業着やスーツ姿の知らない人物が映っている'},
+  scene07_night_intrusion:  {ic:'🌙', c:'#151b2b', d:'夜の住宅の寝室。窓の外に人影、ガラスが割れる気配'},
+  scene08_safe_room_110:    {ic:'📱', c:'#1d2633', d:'鍵をかけた部屋で、スマホの画面に「110」と表示して発信している手元'},
+  scene09_street_pickup:    {ic:'🏘', c:'#2c3530', d:'住宅街の路上。スマホの地図を見ながら封筒を受け取りに向かう若者の後ろ姿'},
+  scene10_celeb_ad:         {ic:'📣', c:'#3b2d1f', d:'スマホのSNSに流れる「必ず儲かる」投資広告(有名人風の写真。実在の人物は使わない)'},
+  scene11_invest_app:       {ic:'📈', c:'#1f3a33', d:'スマホの投資アプリ画面。利益が大きく増えているように見えるグラフ'},
+  scene12_dating_app:       {ic:'💌', c:'#3d2534', d:'スマホのマッチングアプリのプロフィールとメッセージ画面'},
+  scene13_fake_site:        {ic:'🎣', c:'#2d2a3d', d:'スマホに表示された、本物そっくりの偽のログイン画面(カード番号・認証コードの入力欄)'},
+  scene14_travel_post:      {ic:'✈️', c:'#1f3346', d:'旅行先の空港で、家族写真をスマホからSNSに投稿しようとしている手元'},
+  scene15_house_front:      {ic:'🏠', c:'#2d3a2e', d:'日本の住宅の外観と表札・郵便受け(小さな謎の記号が書かれている)'},
+  scene16_family_talk:      {ic:'👨‍👩‍👧', c:'#2a3a33', d:'明るい食卓で、家族がスマホを見せ合いながら話し合う(合言葉を決める等)'}
+};
+/* 仕様書のそのほかの画像(背景以外で使う) */
+var EXTRA_IMG = {
+  top_hero_smartphone: {spec:'①', d:'タイトル画面:夜の室内でスマホの画面光に照らされる若者の手元と、背後に忍び寄る不気味な影(文字なし)', use:'タイトル画面の背景'},
+  end_bad_arrest:      {spec:'⑦', d:'バッドエンド(検挙・後悔):赤色灯が反射する夜の路上で、警察官に囲まれ、地面に落ちたスマホと手錠が写る', use:'闇バイトで「受け取りに行く」を選んだときの判定画面'},
+  ui_smartphone_call:  {spec:'UI', size:'400×400 PNG', d:'「着信中…」と表示されたスマホの実写切り抜き(背景透過)', use:'着信があった場面のアイコン'},
+  ui_smartphone_msg:   {spec:'UI', size:'400×400 PNG', d:'スマホのメッセージ通知画面の実写サムネイル', use:'メッセージ・SNS通知の場面のアイコン'},
+  ui_warning:          {spec:'UI', size:'縦長', d:'「警告!」と表示されたスマホの画面', use:'「被害が発生しました」の判定画面のアイコン'},
+  banner_9110_smartphone: {spec:'UI', size:'16:9', d:'スマホ画面に「#9110」が輝く実写バナー', use:'結果画面とシナリオ選択画面の相談先'}
 };
 
 var SCENARIOS = [
@@ -403,9 +433,9 @@ var SCENARIOS = [
  lead:'「あなたの口座が犯罪に使われています」。警察を名乗る電話から、ビデオ通話・送金へと追い込まれる手口です。',
  points:['警察が電話で「あなたは捜査対象」と告げ、お金を移させることはありません','警察手帳や逮捕状をビデオ通話・メッセージで見せる警察官はいません','「誰にも言わないで」は詐欺の合図。家族や#9110にすぐ相談','銀行の窓口で声をかけられたら、正直に話して止めてもらう'],
  steps:[
-  {bg:'living_phone', m:'calm', n:'', t:'平日の午後。テレビを見ていると、固定電話が鳴った。'},
-  {se:'ring', n:'', t:'ジリリリリ……。画面には見覚えのない番号が表示されている。'},
-  {bg:'phone_talk', m:'tense', n:'電話の男', t:'「こちら○○県警、捜査二課の佐藤と申します。山田和子さんでお間違いないですね?」'},
+  {bg:'scene04_scam_incoming', m:'calm', n:'', t:'平日の午後。テレビを見ていると、テーブルの上のスマホが震えた。'},
+  {se:'ring', n:'', t:'ブーッ、ブーッ……。スマホの画面には、見覚えのない番号が表示されている。'},
+  {bg:'scene04_scam_incoming', m:'tense', n:'電話の男', t:'「こちら○○県警、捜査二課の佐藤と申します。山田和子さんでお間違いないですね?」'},
   {n:'電話の男', t:'「先日逮捕した詐欺グループの押収品から、あなた名義の口座が見つかりました。犯罪に使われた疑いがあります」'},
   {n:'あなた', t:'(えっ……私の口座が? どうしよう……)'},
   {q:'あなたはどうする?', o:[
@@ -418,8 +448,8 @@ var SCENARIOS = [
      res:'男は「否定するなら逮捕状を請求する」と脅し、「無実を証明する手続き」に引き込んだ。結局、預金850万円を移してしまった。',
      why:'言い返して話を続けること自体が危険です。議論せず、すぐに切りましょう。'}
   ]},
-  {bg:'sms_notice', m:'tense', se:'notify', n:'', t:'翌日。スマホにメッセージが届いた。「捜査二課です。本人確認のためビデオ通話をお願いします」'},
-  {bg:'video_call', n:'ビデオ通話の男', t:'(画面には制服姿の男。警察手帳と「逮捕状」と書かれた紙をこちらに見せている)'},
+  {bg:'scene04_scam_sms', m:'tense', se:'notify', n:'', t:'翌日。スマホにメッセージが届いた。「捜査二課です。本人確認のためビデオ通話をお願いします」'},
+  {bg:'scene02_secret_call', n:'ビデオ通話の男', t:'(画面には制服姿の男。警察手帳と「逮捕状」と書かれた紙をこちらに見せている)'},
   {n:'ビデオ通話の男', t:'「このままでは、あなたも逮捕されます。捜査に協力すれば、逮捕は免れます」'},
   {q:'画面の「警察手帳」と「逮捕状」。どう考える?', o:[
     {t:'本物の警察官らしいので、指示に従う', dmg:8500000,
@@ -428,7 +458,7 @@ var SCENARIOS = [
     {t:'ビデオ通話やSNSで警察手帳・逮捕状を見せる警察はいない。応じずに切る', ok:1,
      why:'正解です。制服や手帳はいくらでも偽造できます。「見せてきた」こと自体を、詐欺の証拠と考えましょう。'}
   ]},
-  {bg:'phone_talk', m:'danger', se:'ring', n:'電話の男', t:'「これは秘密捜査です。ご家族にも、銀行の人にも絶対に話さないでください。話せば共犯になります」'},
+  {bg:'scene04_scam_incoming', m:'danger', se:'ring', n:'電話の男', t:'「これは秘密捜査です。ご家族にも、銀行の人にも絶対に話さないでください。話せば共犯になります」'},
   {q:'「誰にも話すな」と言われた。どうする?', o:[
     {t:'迷惑をかけたくないので、一人で対応する', dmg:8500000,
      res:'誰にも相談できないまま追い詰められ、言われるままに預金を引き出して、850万円を渡してしまった。',
@@ -436,7 +466,7 @@ var SCENARIOS = [
     {t:'すぐに家族へ電話し、#9110にも相談する', ok:1,
      why:'正解です。人に話した瞬間に、詐欺はほぼ止まります。相談したことで叱る家族や警察はいません。'}
   ]},
-  {bg:'bank_counter', m:'tense', n:'銀行の窓口', t:'(もしも銀行に行っていたら……)行員「多額のお引き出しですね。何にお使いになりますか?」'},
+  {bg:'scene05_atm_transfer', m:'tense', n:'銀行の窓口', t:'(もしも銀行に行っていたら……)行員「多額のお引き出しですね。何にお使いになりますか?」'},
   {q:'電話の男から「リフォーム代と言え」と言われていたら?', o:[
     {t:'言われたとおり「リフォーム代です」と答える', dmg:8500000,
      res:'行員は念のため確認したが、本人が強く言うので手続きが進んだ。お金はそのまま犯人の口座へ。',
@@ -444,17 +474,17 @@ var SCENARIOS = [
     {t:'正直に「警察から言われた」と話し、行員に相談する', ok:1,
      why:'正解です。銀行は警察と連携して、詐欺を止めてくれます。恥ずかしがらずに話しましょう。'}
   ]},
-  {bg:'police_help', m:'calm', n:'', t:'家族と警察に相談したことで、被害は防げた。電話の「捜査二課の佐藤」は、実在しない人物だった。'},
+  {bg:'end_good_9110_smartphone', m:'calm', n:'', t:'家族と警察に相談したことで、被害は防げた。電話の「捜査二課の佐藤」は、実在しない人物だった。'},
   {end:1}
  ]},
 
 /* ---------------------------------------------------- 2 */
-{id:'oreore', icon:'📞', title:'「俺だけど」と受け子の訪問', role:'あなた:佐藤正夫さん(78歳)', lv:1,
+{id:'oreore', icon:'📱', title:'「俺だけど」と受け子の訪問', role:'あなた:佐藤正夫さん(78歳)', lv:1,
  lead:'息子を名乗る電話から始まり、「代わりの者」が家まで現金やカードを受け取りに来る手口です。',
  points:['「番号が変わった」と言われたら、元の番号にかけ直して確認','家族で合言葉を決めておく','現金・キャッシュカードを取りに来る人には、絶対に渡さない','カードを封筒に入れる「すり替え」に注意。暗証番号は誰にも教えない'],
  steps:[
-  {bg:'living_phone', m:'calm', se:'ring', n:'', t:'夕方、電話が鳴った。'},
-  {bg:'phone_talk', m:'tense', n:'電話の男', t:'「あ、父さん? 俺だけど。風邪ひいちゃって声が変でさ。スマホも壊れて、番号が変わったんだ」'},
+  {bg:'scene04_scam_incoming', m:'calm', se:'ring', n:'', t:'夕方、スマホに着信があった。画面には「非通知」の文字。'},
+  {bg:'scene04_scam_incoming', m:'tense', n:'電話の男', t:'「あ、父さん? 俺だけど。風邪ひいちゃって声が変でさ。スマホも壊れて、番号が変わったんだ」'},
   {q:'息子を名乗る電話。どうする?', o:[
     {t:'「大丈夫か?」と心配し、新しい番号を登録する', dmg:3000000,
      res:'翌日「会社のお金を入れたカバンをなくした」と電話があり、言われるままに300万円を用意してしまった。',
@@ -470,7 +500,7 @@ var SCENARIOS = [
     {t:'家族で決めた合言葉を聞き、答えられなければ切る', ok:1,
      why:'正解です。合言葉や、本人しか知らない思い出を聞けば、なりすましはすぐに分かります。'}
   ]},
-  {bg:'intercom', m:'danger', se:'bell', n:'', t:'ピンポーン。インターホンにスーツ姿の若い男が映っている。'},
+  {bg:'scene06_intercom_visitor', m:'danger', se:'bell', n:'', t:'ピンポーン。インターホンにスーツ姿の若い男が映っている。'},
   {n:'インターホンの男', t:'「息子さんの会社の部下です。お金を受け取りに来ました」'},
   {q:'玄関の前に「会社の部下」。どうする?', o:[
     {t:'せっかく来てくれたので、ドアを開けて話を聞く', dmg:3000000,
@@ -479,7 +509,7 @@ var SCENARIOS = [
     {t:'ドアを開けずに「確認します」と伝え、110番する', ok:1,
      why:'正解です。受け子は近くにいることが多く、すぐの110番で逮捕につながります。'}
   ]},
-  {bg:'intercom', se:'bell', n:'インターホンの男', t:'(数日後)「銀行協会の者です。お使いのキャッシュカードが不正利用されています。新しいカードに交換します」'},
+  {bg:'scene06_intercom_visitor', se:'bell', n:'インターホンの男', t:'(数日後)「銀行協会の者です。お使いのキャッシュカードが不正利用されています。新しいカードに交換します」'},
   {n:'インターホンの男', t:'「古いカードはこの封筒に入れて、ご自宅で保管してください。封をするので印鑑をお持ちください」'},
   {q:'カードを封筒に入れて「保管」。どうする?', o:[
     {t:'言われたとおり封筒に入れ、印鑑を取りに奥へ行く', dmg:1500000,
@@ -488,7 +518,7 @@ var SCENARIOS = [
     {t:'カードは出さず、暗証番号も言わずに帰ってもらい、警察と銀行に連絡する', ok:1,
      why:'正解です。カードや暗証番号を求める訪問者は、名乗りに関係なく詐欺です。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'その週末、家族で集まり、合言葉を決めた。「お金の話の電話は、必ず家族に確認する」と約束した。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'その週末、家族で集まり、合言葉を決めた。「お金の話の電話は、必ず家族に確認する」と約束した。'},
   {end:1}
  ]},
 
@@ -497,8 +527,8 @@ var SCENARIOS = [
  lead:'電話で資産や在宅状況を探り(アポ電)、下見の訪問を経て、押し入る強盗です。対面の場面は、命に関わります。',
  points:['資産・現金の保管場所・在宅の時間は、電話で絶対に答えない','留守番電話を常に設定し、知らない番号には出ない','予定にない点検・工事の訪問はドアを開けず、事業者の正規番号で確認','押し入られたら抵抗しない。安全な場所に逃げて110番'],
  steps:[
-  {bg:'living_phone', m:'calm', se:'ring', n:'', t:'午前中、電話が鳴った。'},
-  {bg:'phone_talk', m:'tense', n:'電話の女', t:'「国の調査をしております。物価の高騰で、ご自宅に現金を置かれる方が増えていますが、お宅ではいかがですか?」'},
+  {bg:'scene04_scam_incoming', m:'calm', se:'ring', n:'', t:'午前中、スマホに知らない番号から着信があった。'},
+  {bg:'scene04_scam_incoming', m:'tense', n:'電話の女', t:'「国の調査をしております。物価の高騰で、ご自宅に現金を置かれる方が増えていますが、お宅ではいかがですか?」'},
   {n:'電話の女', t:'「あわせて、日中はご在宅のことが多いですか? 金庫はお持ちですか?」'},
   {q:'調査と名乗る電話。どうする?', o:[
     {t:'「タンス預金が少しあります。昼はだいたい家にいます」と答える', dmg:12000000,
@@ -507,7 +537,7 @@ var SCENARIOS = [
     {t:'何も答えずに電話を切り、留守番電話を常に設定する', ok:1,
      why:'正解です。国や自治体が電話で現金の有無を聞くことはありません。留守番電話にして、知らない番号には出ないのが効果的です。'}
   ]},
-  {bg:'intercom', m:'tense', se:'bell', n:'インターホンの男', t:'(翌週)「水道局の委託業者です。この地域の配管の点検で、家の中を拝見したいのですが」'},
+  {bg:'scene06_intercom_visitor', m:'tense', se:'bell', n:'インターホンの男', t:'(翌週)「水道局の委託業者です。この地域の配管の点検で、家の中を拝見したいのですが」'},
   {q:'予定にない「点検」の訪問。どうする?', o:[
     {t:'家の中を見せて回る', dmg:12000000,
      res:'男は間取り、窓の鍵、寝室の位置、金庫の場所を確認して帰った。数日後、その情報どおりに強盗が押し入った。',
@@ -515,7 +545,7 @@ var SCENARIOS = [
     {t:'ドアを開けずに名前と会社を聞き、自分で調べた水道局の番号に確認する', ok:1,
      why:'正解です。予定にない点検は、ドアを開けずに断ってかまいません。不審なら110番です。'}
   ]},
-  {bg:'night_room', m:'danger', se:'glass', fx:'shake', n:'', t:'深夜2時。1階でガラスの割れる音がした。複数の足音が近づいてくる。'},
+  {bg:'scene07_night_intrusion', m:'danger', se:'glass', fx:'shake', n:'', t:'深夜2時。1階でガラスの割れる音がした。複数の足音が近づいてくる。'},
   {se:'steps', n:'あなた', t:'(誰かが入ってきた……!)'},
   {q:'家の中に侵入者。どうする?', o:[
     {t:'ゴルフクラブを持って、1階へ様子を見に行く', dmg:12000000,
@@ -524,8 +554,8 @@ var SCENARIOS = [
     {t:'鍵のかかる部屋に逃げて閉じこもり、すぐ110番する', ok:1,
      why:'正解です。命を守ることを最優先に。抵抗せず、安全を確保してから110番。犯人の人数や服装は、可能な範囲で覚えておきます。'}
   ]},
-  {bg:'safe_room', m:'tense', n:'', t:'寝室の鍵をかけ、スマホで110番した。数分後、サイレンの音が近づき、侵入者は逃げていった。'},
-  {bg:'house_front', m:'calm', n:'', t:'翌日、警察の助言で、補助錠・防犯フィルム・センサーライトを付けることにした。'},
+  {bg:'scene08_safe_room_110', m:'tense', n:'', t:'寝室の鍵をかけ、スマホで110番した。数分後、サイレンの音が近づき、侵入者は逃げていった。'},
+  {bg:'scene15_house_front', m:'calm', n:'', t:'翌日、警察の助言で、補助錠・防犯フィルム・センサーライトを付けることにした。'},
   {q:'これからの備えで、いちばん大切なのは?', o:[
     {t:'自宅の金庫を大きく丈夫なものにして、現金を置き続ける', dmg:5000000,
      res:'「現金がある家」として狙われ続け、再び侵入されて500万円を奪われた。',
@@ -533,7 +563,7 @@ var SCENARIOS = [
     {t:'多額の現金を家に置かず、窓・玄関の防犯を強化し、在宅中も施錠する', ok:1,
      why:'正解です。「侵入に時間がかかる・狙いにくい家」にすることと、現金を置かないことが効果的です。'}
   ]},
-  {bg:'police_help', n:'', t:'鈴木家は、防犯対策と「知らない電話には出ない」を徹底した。'},
+  {bg:'end_good_9110_smartphone', n:'', t:'鈴木家は、防犯対策と「知らない電話には出ない」を徹底した。'},
   {end:1}
  ]},
 
@@ -542,8 +572,8 @@ var SCENARIOS = [
  lead:'「高収入」「即日」「運ぶだけ」。SNSの求人から、強盗や詐欺の実行役(受け子・出し子)にされる手口です。',
  points:['「高収入・即日・ホワイト案件・運ぶだけ」は犯罪の入り口','身分証・顔写真・家族の情報は絶対に送らない','脅されても、警察は相談した人と家族を守る。#9110か110番へ','受け子・出し子も重い罪。被害者への賠償責任も負う'],
  steps:[
-  {bg:'youth_room', m:'calm', n:'', t:'一人暮らしを始めて3か月。仕送りだけでは足りず、バイトを探していた。'},
-  {bg:'sns_ad', se:'notify', n:'SNSの投稿', t:'「【ホワイト案件】日給5万円〜/即日払い/荷物を受け取って運ぶだけ/未経験OK/興味ある人はDMへ」'},
+  {bg:'scene01_sns_recruit', m:'calm', n:'', t:'一人暮らしを始めて3か月。仕送りだけでは足りず、バイトを探していた。'},
+  {bg:'scene01_sns_recruit', se:'notify', n:'SNSの投稿', t:'「【ホワイト案件】日給5万円〜/即日払い/荷物を受け取って運ぶだけ/未経験OK/興味ある人はDMへ」'},
   {q:'気になる求人を見つけた。どうする?', o:[
     {t:'「詳しく教えてください」とDMを送る', dmg:3000000,
      res:'すぐに返信が来て、秘匿性の高いアプリに誘導された。気づいたときには、引き返せない状況になっていた。',
@@ -551,7 +581,7 @@ var SCENARIOS = [
     {t:'怪しい求人なので反応せず、身近な大人に話す', ok:1,
      why:'正解です。まともな仕事は「運ぶだけで日給5万円」になりません。反応しないのが一番の防御です。'}
   ]},
-  {bg:'chat_threat', m:'tense', se:'notify', n:'', t:'(もしも、応募していたら……)「採用の手続きです。身分証の両面と、顔写真、実家の住所を送ってください」'},
+  {bg:'scene03_id_selfie', m:'tense', se:'notify', n:'', t:'(もしも、応募していたら……)「採用の手続きです。身分証の両面と、顔写真、実家の住所を送ってください」'},
   {q:'身分証と家族の情報を求められた。どうする?', o:[
     {t:'採用のためなら仕方ないと、全部送る', dmg:3000000,
      res:'送った情報は、後で「逃げたら家族に危害を加える」と脅す材料に使われた。',
@@ -559,7 +589,7 @@ var SCENARIOS = [
     {t:'送らずにやり取りをやめ、親か#9110に相談する', ok:1,
      why:'正解です。途中でやめても、まったく遅くありません。'}
   ]},
-  {bg:'chat_threat', m:'danger', se:'notify', fx:'shake', n:'指示役', t:'「今さら辞めるとか通らないよ。お前の実家の住所、分かってるからな。家族がどうなってもいいの?」'},
+  {bg:'scene02_secret_call', m:'danger', se:'notify', fx:'shake', n:'指示役', t:'「今さら辞めるとか通らないよ。お前の実家の住所、分かってるからな。家族がどうなってもいいの?」'},
   {q:'家族を人質にした脅し。どうする?', o:[
     {t:'家族を守るために、言われたとおりにする', dmg:3000000,
      res:'従うと、次々に指示はエスカレートした。脅しが止まることはなく、犯罪の実行役にされた。',
@@ -567,15 +597,15 @@ var SCENARIOS = [
     {t:'すぐに警察(110番か#9110)に相談する。警察は本人と家族を守ってくれる', ok:1,
      why:'正解です。警察は、闇バイトから抜けたい人と家族の保護に取り組んでいます。一人で抱えないでください。'}
   ]},
-  {bg:'street', m:'danger', n:'指示役', t:'「今から○○町の家に行け。おばあちゃんから封筒を受け取って、駅のロッカーに入れろ。それだけだ」'},
+  {bg:'scene09_street_pickup', m:'danger', n:'指示役', t:'「今から○○町の家に行け。おばあちゃんから封筒を受け取って、駅のロッカーに入れろ。それだけだ」'},
   {q:'「受け取るだけ」の指示。どうする?', o:[
     {t:'受け取るだけなら罪は軽いはず、と行く', dmg:3000000,
-     res:'張り込んでいた警察官に現行犯逮捕された。詐欺の受け子として起訴され、被害者への賠償として約300万円を請求された。前科がつき、大学も退学になった。',
+     img:'end_bad_arrest', res:'張り込んでいた警察官に現行犯逮捕された。詐欺の受け子として起訴され、被害者への賠償として約300万円を請求された。前科がつき、大学も退学になった。',
      why:'受け子・出し子も、詐欺罪(10年以下の拘禁刑)などに問われます。「知らなかった」は通りません。'},
     {t:'絶対に行かない。その場で110番し、やり取りの画面を保存して見せる', ok:1,
      why:'正解です。犯行に加わる前に相談すれば、守られる道があります。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'ハルトは警察と家族に相談し、アカウントを消した。闇バイトの誘いを、友だちにも注意するよう伝えた。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'ハルトは警察と家族に相談し、アカウントを消した。闇バイトの誘いを、友だちにも注意するよう伝えた。'},
   {end:1}
  ]},
 
@@ -584,7 +614,7 @@ var SCENARIOS = [
  lead:'有名人を装った広告から投資グループに誘い、偽のアプリで「利益」を見せて、送金を重ねさせる手口です。',
  points:['有名人の「必ず儲かる」広告は、なりすましを疑う','振込先が個人名義の口座なら、まず詐欺','「出金には手数料・税金が先に必要」は詐欺の典型','「被害を取り戻せる」という業者からの連絡(二次被害)にも注意'],
  steps:[
-  {bg:'celeb_ad', m:'calm', n:'', t:'寝る前にSNSを見ていると、有名な経済評論家の写真が付いた広告が流れてきた。'},
+  {bg:'scene10_celeb_ad', m:'calm', n:'', t:'寝る前にSNSを見ていると、有名な経済評論家の写真が付いた広告が流れてきた。'},
   {n:'広告', t:'「私が実践する、元本保証で月30%増える投資法。無料のLINEグループで特別に教えます」'},
   {q:'有名人の投資広告。どうする?', o:[
     {t:'有名な人だから安心だと思い、グループに参加する', dmg:15000000,
@@ -593,7 +623,7 @@ var SCENARIOS = [
     {t:'なりすまし広告を疑い、参加しない', ok:1,
      why:'正解です。広告から無料グループに誘い込むのが、SNS型投資詐欺の入り口です。'}
   ]},
-  {bg:'invest_app', m:'tense', se:'notify', n:'アシスタント', t:'(もしも参加していたら……)「このアプリで運用します。まずは50万円を下記の口座へ。名義は個人ですが、税金対策です」'},
+  {bg:'scene11_invest_app', m:'tense', se:'notify', n:'アシスタント', t:'(もしも参加していたら……)「このアプリで運用します。まずは50万円を下記の口座へ。名義は個人ですが、税金対策です」'},
   {q:'振込先は個人名義の口座。どう判断する?', o:[
     {t:'税金対策なら仕方ないと、振り込む', dmg:15000000,
      res:'アプリの画面では、50万円が1週間で70万円に。うれしくなり、追加の送金を繰り返した。',
@@ -601,7 +631,7 @@ var SCENARIOS = [
     {t:'個人名義の口座への振込は詐欺と判断し、金融庁の登録業者か確認する', ok:1,
      why:'正解です。正規の業者は、個人名義の口座に振り込ませません。金融庁の「免許・許可・登録等を受けている業者一覧」で確認できます。'}
   ]},
-  {bg:'invest_app', m:'tense', n:'アシスタント', t:'「上場前の特別な大型案件があります。メンバー限定で、あと500万円入れれば利益は3倍です」'},
+  {bg:'scene11_invest_app', m:'tense', n:'アシスタント', t:'「上場前の特別な大型案件があります。メンバー限定で、あと500万円入れれば利益は3倍です」'},
   {q:'さらに高額な「特別案件」。どうする?', o:[
     {t:'今までの利益が出ているので、追加で500万円入れる', dmg:15000000,
      res:'退職金の一部まで使い、送金額は合計1,500万円に。その後、アシスタントとは連絡が取れなくなった。',
@@ -609,7 +639,7 @@ var SCENARIOS = [
     {t:'追加の送金はしない。家族と警察に相談する', ok:1,
      why:'正解です。一度立ち止まり、誰かに話すことで被害の拡大を防げます。'}
   ]},
-  {bg:'sms_notice', m:'danger', se:'notify', n:'アシスタント', t:'「出金するには、利益の20%の税金と手数料、計200万円を先に払ってください」'},
+  {bg:'scene04_scam_sms', m:'danger', se:'notify', n:'アシスタント', t:'「出金するには、利益の20%の税金と手数料、計200万円を先に払ってください」'},
   {q:'「出金のための手数料」。どうする?', o:[
     {t:'払わないと全額戻らないので、200万円を払う', dmg:2000000,
      res:'払っても出金はされず、「次は保証金が必要」とさらに請求された。',
@@ -617,7 +647,7 @@ var SCENARIOS = [
     {t:'払わない。やり取りを保存し、警察(#9110)と金融サービス利用者相談室に相談する', ok:1,
      why:'正解です。振込先の口座を早く止めれば、被害金の一部が戻る可能性もあります。'}
   ]},
-  {bg:'sms_notice', se:'notify', n:'知らない業者', t:'「投資詐欺の被害金を取り戻します。着手金30万円で、弁護士が対応します」'},
+  {bg:'scene04_scam_sms', se:'notify', n:'知らない業者', t:'「投資詐欺の被害金を取り戻します。着手金30万円で、弁護士が対応します」'},
   {q:'「被害を取り戻せる」という連絡。どうする?', o:[
     {t:'取り戻せるなら、と着手金を払う', dmg:300000,
      res:'着手金を払った後、業者とは連絡が取れなくなった。二次被害だった。',
@@ -625,7 +655,7 @@ var SCENARIOS = [
     {t:'相手からの連絡には応じず、自分で法テラスや弁護士会、警察に相談する', ok:1,
      why:'正解です。相談先は、自分で調べた公式の窓口を使います。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'美香さんは、夫と一緒に警察へ相談した。「儲け話の広告は押さない」を家族のルールにした。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'美香さんは、夫と一緒に警察へ相談した。「儲け話の広告は押さない」を家族のルールにした。'},
   {end:1}
  ]},
 
@@ -634,7 +664,7 @@ var SCENARIOS = [
  lead:'マッチングアプリやSNSで親しくなり、会えない理由を重ねながら、お金や投資の話に誘う手口です。',
  points:['会ったことのない相手への送金は、理由に関係なくしない','すぐに外部のアプリへ誘う・ビデオ通話を断る相手は要注意','「荷物の関税」「医療費」「一緒に投資」は典型的な口実','プロフィール写真は、画像検索で他人の写真か確認できる'],
  steps:[
-  {bg:'dating_app', m:'calm', se:'notify', n:'', t:'マッチングアプリで、海外で働く医師だという女性「エマ」とマッチした。'},
+  {bg:'scene12_dating_app', m:'calm', se:'notify', n:'', t:'マッチングアプリで、海外で働く医師だという女性「エマ」とマッチした。'},
   {n:'エマ', t:'「健一さんと話していると、とても落ち着きます。ここは不便なので、LINEで話しませんか?」'},
   {q:'すぐに別のアプリへ誘われた。どうする?', o:[
     {t:'うれしくなり、すぐにLINEを教える', dmg:7000000,
@@ -643,7 +673,7 @@ var SCENARIOS = [
     {t:'アプリ内でやり取りを続け、写真を画像検索で確認する', ok:1,
      why:'正解です。写真が別人のSNSやモデルの写真だと分かることがよくあります。'}
   ]},
-  {bg:'dating_app', m:'tense', n:'エマ', t:'「会いに行きたいけれど、紛争地域の病院を離れられないの。ビデオ通話も、規則で禁止されているの」'},
+  {bg:'scene12_dating_app', m:'tense', n:'エマ', t:'「会いに行きたいけれど、紛争地域の病院を離れられないの。ビデオ通話も、規則で禁止されているの」'},
   {n:'エマ', t:'「あなたにプレゼントを送ったわ。でも税関で止められて、関税の30万円が必要なんですって」'},
   {q:'会えない相手から、お金の頼み。どうする?', o:[
     {t:'恋人の頼みなので、30万円を振り込む', dmg:7000000,
@@ -652,7 +682,7 @@ var SCENARIOS = [
     {t:'会ったことのない相手には、どんな理由でも送金しないと決めて断る', ok:1,
      why:'正解です。本当にあなたを大切に思う人は、会ったこともない相手にお金を求めません。'}
   ]},
-  {bg:'invest_app', m:'tense', n:'エマ', t:'「二人の将来のために、私が使っている暗号資産の投資を一緒に始めましょう。このサイトに登録して」'},
+  {bg:'scene11_invest_app', m:'tense', n:'エマ', t:'「二人の将来のために、私が使っている暗号資産の投資を一緒に始めましょう。このサイトに登録して」'},
   {q:'「一緒に投資を」と誘われた。どうする?', o:[
     {t:'二人の将来のためなら、と登録して入金する', dmg:7000000,
      res:'偽の取引サイトで利益が出ているように見せられ、入金を重ねた。出金できず、エマとも連絡が取れなくなった。',
@@ -660,25 +690,25 @@ var SCENARIOS = [
     {t:'断ってやり取りをやめ、アプリの運営と#9110に相談する', ok:1,
      why:'正解です。相手のアカウントを運営に通報すれば、他の人の被害も防げます。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'健一さんは、娘に一連のやり取りを見せた。「話してくれてよかった」と言われ、心が軽くなった。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'健一さんは、娘に一連のやり取りを見せた。「話してくれてよかった」と言われ、心が軽くなった。'},
   {end:1}
  ]},
 
 /* ---------------------------------------------------- 7 */
 {id:'kanpu', icon:'🏧', title:'還付金詐欺', role:'あなた:小林トシ子さん(80歳)', lv:1,
  lead:'市役所などを名乗り「お金が戻る」と言って、ATMに誘導し、逆にお金を振り込ませる手口です。',
- points:['ATMで還付金(お金が戻る手続き)はできない','「ATMに行って」「携帯電話を持って」は詐欺','役所の電話は、いったん切って代表番号にかけ直す','ATMで電話しながら操作している人には、周りも声をかけて'],
+ points:['ATMで還付金(お金が戻る手続き)はできない','「ATMに行って」「スマホを持って」は詐欺','役所の電話は、いったん切って代表番号にかけ直す','ATMで電話しながら操作している人には、周りも声をかけて'],
  steps:[
-  {bg:'living_phone', m:'calm', se:'ring', n:'', t:'朝、電話が鳴った。'},
-  {bg:'phone_talk', m:'calm', n:'電話の男', t:'「市役所の保険年金課です。医療費の払い戻しが3万円あります。期限が今日までなんです」'},
+  {bg:'scene04_scam_incoming', m:'calm', se:'ring', n:'', t:'朝、スマホに着信があった。'},
+  {bg:'scene04_scam_incoming', m:'calm', n:'電話の男', t:'「市役所の保険年金課です。医療費の払い戻しが3万円あります。期限が今日までなんです」'},
   {q:'「お金が戻る」という電話。どうする?', o:[
     {t:'「今日までなら急がないと」と手続きの方法を聞く', dmg:950000,
-     res:'「近くのATMで手続きできます。携帯電話を持って行ってください」と案内され、言われるままに操作。95万円を振り込んでいた。',
+     res:'「近くのATMで手続きできます。スマホを持って行ってください」と案内され、言われるままに操作。95万円を振り込んでいた。',
      why:'「期限は今日まで」と急がせるのが手口です。'},
     {t:'いったん切って、市役所の代表番号に自分でかけて確認する', ok:1,
      why:'正解です。役所は、電話で期限を区切って手続きを急がせることはありません。'}
   ]},
-  {bg:'atm', m:'tense', n:'電話の男', t:'(もしも、ATMに行っていたら……)「では携帯電話を耳に当てたまま、『振込』のボタンを押してください」'},
+  {bg:'scene05_atm_transfer', m:'tense', n:'電話の男', t:'(もしも、ATMに行っていたら……)「ではスマホを耳に当てたまま、『振込』のボタンを押してください」'},
   {q:'ATMで「振込」ボタンを押すように言われた。', o:[
     {t:'還付の手続きなのだろうと思い、押す', dmg:950000,
      res:'「お客様番号」と言われて入力した数字は、振込の金額だった。95万円が犯人の口座へ送られた。',
@@ -686,7 +716,7 @@ var SCENARIOS = [
     {t:'ATMでお金は戻らないと気づき、操作をやめて近くの行員に声をかける', ok:1,
      why:'正解です。ATMで電話の指示を受けている時点で、詐欺です。'}
   ]},
-  {bg:'police_help', m:'calm', n:'', t:'トシ子さんは、すぐに家族と警察に連絡した。電話には、今後は留守番電話で応対することにした。'},
+  {bg:'end_good_9110_smartphone', m:'calm', n:'', t:'トシ子さんは、すぐに家族と警察に連絡した。電話には、今後は留守番電話で応対することにした。'},
   {end:1}
  ]},
 
@@ -695,7 +725,7 @@ var SCENARIOS = [
  lead:'個人情報の漏えいニュースのあと、企業を名乗るSMSや電話で、カード情報や認証コードを盗む手口です。',
  points:['SMSやメールのリンクは押さず、公式アプリやブックマークから確認','認証コード(ワンタイムパスワード)は、誰にも教えない','カード会社を名乗る電話は切って、カード裏面の番号にかけ直す','入力してしまったら、すぐにカード会社へ連絡して止める'],
  steps:[
-  {bg:'sms_notice', m:'calm', n:'', t:'ニュースで、よく使う通販サイトから個人情報が漏えいしたと知った。その夜、SMSが届いた。'},
+  {bg:'scene04_scam_sms', m:'calm', n:'', t:'ニュースで、よく使う通販サイトから個人情報が漏えいしたと知った。その夜、SMSが届いた。'},
   {se:'notify', n:'SMS', t:'「【○○カード】お客様のカードに不正利用の可能性があります。本人確認をお願いします → https://…」'},
   {q:'不安になるSMS。どうする?', o:[
     {t:'急いでリンクを開いて確認する', dmg:480000,
@@ -704,7 +734,7 @@ var SCENARIOS = [
     {t:'リンクは押さず、カード会社の公式アプリで利用明細を確認する', ok:1,
      why:'正解です。本物かどうかは、自分で開いた公式アプリや、ブックマークしたサイトで確かめます。'}
   ]},
-  {bg:'fake_site', m:'tense', n:'', t:'(もしも、リンクを開いていたら……)「本人確認のため、カード番号・有効期限・セキュリティコード、SMSで届いた認証コードを入力してください」'},
+  {bg:'scene13_fake_site', m:'tense', n:'', t:'(もしも、リンクを開いていたら……)「本人確認のため、カード番号・有効期限・セキュリティコード、SMSで届いた認証コードを入力してください」'},
   {q:'認証コードまで求められた。どうする?', o:[
     {t:'公式っぽいので、すべて入力する', dmg:480000,
      res:'入力した情報で、犯人が別の端末からカードを登録。高額な家電を購入された。',
@@ -712,7 +742,7 @@ var SCENARIOS = [
     {t:'入力せずにページを閉じる。認証コードは誰にも教えない', ok:1,
      why:'正解です。正規の会社が、SMSのリンク先で認証コードを入力させることはありません。'}
   ]},
-  {bg:'phone_talk', m:'tense', se:'ring', n:'電話の女', t:'「○○カードのセキュリティ担当です。不正利用を止めるため、カードの暗証番号と、今届いたコードを教えてください」'},
+  {bg:'scene04_scam_incoming', m:'tense', se:'ring', n:'電話の女', t:'「○○カードのセキュリティ担当です。不正利用を止めるため、カードの暗証番号と、今届いたコードを教えてください」'},
   {q:'カード会社を名乗る電話。どうする?', o:[
     {t:'止めてもらうために教える', dmg:480000,
      res:'教えた暗証番号とコードで、口座から現金も引き出された。',
@@ -720,7 +750,7 @@ var SCENARIOS = [
     {t:'電話を切り、カード裏面に書かれた番号にかけ直す', ok:1,
      why:'正解です。かけてきた相手ではなく、自分で確かめた番号に連絡します。'}
   ]},
-  {bg:'fake_site', m:'danger', n:'あなた', t:'(しまった……。実は、昨日別の偽サイトに、カード番号を入れてしまっていたかもしれない)'},
+  {bg:'scene13_fake_site', m:'danger', n:'あなた', t:'(しまった……。実は、昨日別の偽サイトに、カード番号を入れてしまっていたかもしれない)'},
   {q:'入力してしまったかも。まず何をする?', o:[
     {t:'様子を見て、請求が来てから考える', dmg:480000,
      res:'翌月の明細に、身に覚えのない48万円の請求が並んでいた。',
@@ -728,7 +758,7 @@ var SCENARIOS = [
     {t:'すぐカード会社に連絡して止め、パスワードを変え、警察にも相談する', ok:1,
      why:'正解です。早く止めれば、補償を受けられる場合も多くなります。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'翔太さんは、公式アプリのブックマークと、パスワード管理ツールを使い始めた。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'翔太さんは、公式アプリのブックマークと、パスワード管理ツールを使い始めた。'},
   {end:1}
  ]},
 
@@ -737,7 +767,7 @@ var SCENARIOS = [
  lead:'SNSの投稿や家の周りの様子から、留守の時間や家の場所が知られ、空き巣や強盗の標的になります。',
  points:['旅行・帰省・不在の投稿は、帰宅してから','写真の位置情報・家の外観・最寄りの景色に注意','表札や郵便受けの見慣れない記号やシールは、消して警察に相談','郵便物や荷物をためず、留守を悟らせない'],
  steps:[
-  {bg:'travel_post', m:'calm', n:'', t:'家族で1週間の沖縄旅行。空港で、家族写真を撮った。'},
+  {bg:'scene14_travel_post', m:'calm', n:'', t:'家族で1週間の沖縄旅行。空港で、家族写真を撮った。'},
   {n:'長女', t:'「ねえ、今から旅行って投稿していい? 『1週間、家族みんなで沖縄!』って」'},
   {q:'旅行中の投稿。どうする?', o:[
     {t:'みんなに見てもらいたいので、すぐ投稿する', dmg:2500000,
@@ -746,7 +776,7 @@ var SCENARIOS = [
     {t:'投稿は帰宅してからにする', ok:1,
      why:'正解です。楽しい思い出は、帰ってから共有しても遅くありません。'}
   ]},
-  {bg:'house_front', m:'tense', n:'長女', t:'「前に上げた写真、家の前で撮ったから、家の外観と車のナンバーが写ってた……」'},
+  {bg:'scene15_house_front', m:'tense', n:'長女', t:'「前に上げた写真、家の前で撮ったから、家の外観と車のナンバーが写ってた……」'},
   {q:'家が特定できる写真。どうする?', o:[
     {t:'鍵アカウントだから大丈夫、とそのままにする', dmg:2500000,
      res:'フォロワーの中に、知らない「友だちの友だち」がいた。写真から家の場所が割り出された。',
@@ -754,7 +784,7 @@ var SCENARIOS = [
     {t:'写真を削除し、位置情報の付く設定もオフにする', ok:1,
      why:'正解です。外観・表札・ナンバー・制服・最寄り駅などから、住所は特定されます。'}
   ]},
-  {bg:'house_front', m:'tense', n:'', t:'旅行から帰ると、表札の横に、小さく「W」「×」のような記号が書かれていた。'},
+  {bg:'scene15_house_front', m:'tense', n:'', t:'旅行から帰ると、表札の横に、小さく「W」「×」のような記号が書かれていた。'},
   {q:'見慣れない記号。どうする?', o:[
     {t:'子どものいたずらだろうと、放っておく', dmg:2500000,
      res:'記号は、家族構成や留守の時間を示す「マーキング」だった可能性がある。数週間後、留守中に侵入された。',
@@ -762,7 +792,7 @@ var SCENARIOS = [
     {t:'写真に撮ってから消し、警察に相談する', ok:1,
      why:'正解です。地域の警察署に伝えると、パトロールを強めてもらえることがあります。'}
   ]},
-  {bg:'family_talk', m:'calm', n:'', t:'渡辺さん一家は、「投稿は帰ってから」「家が分かる写真は上げない」を家族のルールにした。'},
+  {bg:'scene16_family_talk', m:'calm', n:'', t:'渡辺さん一家は、「投稿は帰ってから」「家が分かる写真は上げない」を家族のルールにした。'},
   {end:1}
  ]}
 ];
@@ -773,7 +803,7 @@ var SCENARIOS = [
 /* 画像の置き場所: このHTMLと同じ場所の img/ フォルダに「キー.jpg」(例: img/living_phone.jpg)。
    画像を直接埋め込む場合は IMAGES にキー: 'data:image/jpeg;base64,...' または URL を書く。 */
 var IMG_DIR = 'img/';
-var IMG_EXT = ['.jpg', '.png', '.webp'];
+var IMG_EXT = ['.webp', '.jpg', '.png'];
 var IMAGES = {};
 var SHOW_IMG_LABEL = true;   // 画像が無いとき、画像枠の説明を表示する(画像がそろったら false に)
 
@@ -862,7 +892,15 @@ function noise(d, vol, when, hp){
   s.connect(f); f.connect(g); g.connect(SND.seG); s.start(t);
 }
 var SE = {
-  ring: function(){ for(var r = 0; r < 2; r++) for(var i = 0; i < 14; i++) tone(i % 2 ? 1180 : 980, 0.05, 'square', 0.09, r * 1.0 + i * 0.05); },
+  ring: function(){
+    /* スマホの着信音(マリンバ風のメロディ)+バイブ */
+    var mel = [1318.5, 987.8, 1174.7, 1568, 1318.5, 987.8];
+    for(var r = 0; r < 2; r++){
+      mel.forEach(function(f, i){ tone(f, 0.22, 'sine', 0.16, r * 1.3 + i * 0.13); tone(f * 2, 0.12, 'triangle', 0.04, r * 1.3 + i * 0.13); });
+      tone(155, 0.45, 'sawtooth', 0.05, r * 1.3, null, 150);
+    }
+  },
+  vib: function(){ for(var i = 0; i < 2; i++) tone(150, 0.38, 'sawtooth', 0.07, i * 0.55, null, 145); },
   bell: function(){ tone(784, 0.7, 'sine', 0.35, 0); tone(622, 1.1, 'sine', 0.35, 0.45); },
   notify: function(){ tone(1320, 0.09, 'sine', 0.25, 0); tone(1760, 0.14, 'sine', 0.25, 0.1); },
   glass: function(){ noise(0.6, 0.6, 0, 2500); tone(3200, 0.25, 'triangle', 0.08, 0.02); tone(4100, 0.2, 'triangle', 0.06, 0.08); },
@@ -1073,6 +1111,27 @@ function setBg(key){
   });
 }
 
+/* 着信・メッセージの表示(仕様書のUIパーツ。画像が無いときは絵文字) */
+function showBadge(kind){
+  var el = document.getElementById('callBadge'); if(!el) return;
+  var key = kind === 'call' ? 'ui_smartphone_call' : 'ui_smartphone_msg';
+  var label = kind === 'call' ? '着信中…' : '新しいメッセージ';
+  el.className = 'cb ' + kind;
+  el.innerHTML = '<span class="cb-ic">' + (kind === 'call' ? '📱' : '💬') + '</span><span class="cb-tx">' + label + '</span>';
+  resolveImg(key, function(url){ if(url){ el.querySelector('.cb-ic').innerHTML = '<img src="' + url + '" alt="">'; } });
+  void el.offsetWidth; el.classList.add('on');
+  clearTimeout(showBadge._t); showBadge._t = setTimeout(function(){ el.classList.remove('on'); }, kind === 'call' ? 2800 : 2000);
+}
+/* 画像があれば表示(タイトル・#9110バナー) */
+function applyExtraImages(){
+  resolveImg('top_hero_smartphone', function(url){
+    if(url){ var h = document.querySelector('.hero'); h.style.backgroundImage = 'linear-gradient(90deg,rgba(8,10,18,.82) 0%,rgba(8,10,18,.55) 55%,rgba(8,10,18,.2) 100%),linear-gradient(180deg,rgba(8,10,18,.1) 40%,rgba(8,10,18,.7) 100%),url("' + url + '")'; h.classList.add('has-img'); }
+  });
+  resolveImg('banner_9110_smartphone', function(url){
+    document.querySelectorAll('.b9110').forEach(function(im){ if(url){ im.src = url; im.hidden = false; } });
+  });
+}
+
 /* ===================== ゲーム進行 ===================== */
 var SPEEDS = {slow:55, mid:30, fast:12, inst:0};
 var G = { sc:null, i:0, dmg:0, miss:0, log:[], typing:false, full:'', timer:null, mode:'text', bg:null, speed:ls('toku_sp') || 'mid' };
@@ -1125,6 +1184,7 @@ function runNode(){
   if(nd.bg) setBg(nd.bg);
   if(nd.m) bgm(nd.m);
   if(nd.se) se(nd.se);
+  if(nd.se === 'ring') showBadge('call'); else if(nd.se === 'notify') showBadge('msg');
   if(nd.fx === 'shake'){ var st = document.getElementById('stage'); st.classList.remove('shake'); void st.offsetWidth; st.classList.add('shake'); }
   document.getElementById('choices').innerHTML = '';
   if(nd.q){ G.mode = 'choice'; document.getElementById('nm').textContent = ''; typeText('<span class="q">' + esc(nd.q) + '</span>', nd.q, showChoices); return; }
@@ -1188,13 +1248,15 @@ function judgeBad(op){
   bgm('danger');
   var jd = document.getElementById('jd'); jd.className = 'jd bad';
   document.getElementById('jdH').innerHTML = '⚠ 被害が発生しました';
-  document.getElementById('jdB').innerHTML =
+  resolveImg('ui_warning', function(url){ if(url && document.getElementById('jd').classList.contains('bad')) document.getElementById('jdH').innerHTML = '<img class="jd-warn" src="' + url + '" alt="">被害が発生しました'; });
+  document.getElementById('jdB').innerHTML = (op.img ? '<div class="jd-img" id="jdImg" hidden></div>' : '') +
     '<div class="dmg"><small>この選択による想定被害額</small><div class="v" id="dmgV">0円</div></div>' +
     '<div class="res"><b>何が起きたか</b>' + esc(op.res || '') + '</div>' +
     '<div class="why"><b>どうすればよかった?</b>' + esc(op.why) + '</div>';
   document.getElementById('jdF').innerHTML = '<button class="btn red" type="button" onclick="redo()">この場面からやり直す</button>';
   openJudge();
   countUp(document.getElementById('dmgV'), op.dmg || 0);
+  if(op.img) resolveImg(op.img, function(url){ var b = document.getElementById('jdImg'); if(b && url){ b.style.backgroundImage = 'url("' + url + '")'; b.hidden = false; } });
   updDsum(true);
 }
 function countUp(el, to){
@@ -1277,6 +1339,7 @@ document.addEventListener('visibilitychange', function(){
 /* ===================== 起動 ===================== */
 document.getElementById('sndBtn').textContent = '🔇';
 updateTitle();
+applyExtraImages();
 
 </script>
 </body>
